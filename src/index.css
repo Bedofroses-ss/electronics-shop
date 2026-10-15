@@ -1,0 +1,99 @@
+@import 'tailwindcss';
+
+/*
+ * Дизайн-система из ТЗ.
+ * В Tailwind v4 токены темы задаются прямо в CSS, отдельный tailwind.config.js не нужен.
+ */
+@theme {
+  --color-ink: #000000;
+  --color-accent: #0071e3;
+  --color-mist: #f5f5f7;
+  --color-graphite: #86868b;
+  /* Заглушка вместо фотографии */
+  --color-placeholder: #222222;
+
+  --font-display: 'SF Pro Display', Inter, Manrope, system-ui, sans-serif;
+
+  --radius-card: 24px;
+  --radius-pill: 980px;
+  --blur-glass: 20px;
+}
+
+@layer base {
+  html {
+    background-color: var(--color-ink);
+    color: var(--color-mist);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    margin: 0;
+    font-family: var(--font-display);
+  }
+}
+
+@layer components {
+  /* «Liquid Glass»: стеклянная пилюля и панели */
+  .glass {
+    background-color: rgb(255 255 255 / 0.06);
+    backdrop-filter: blur(var(--blur-glass));
+    -webkit-backdrop-filter: blur(var(--blur-glass));
+    border: 1px solid rgb(255 255 255 / 0.12);
+  }
+
+  .glass-pill {
+    border-radius: var(--radius-pill);
+  }
+
+  .glass-card {
+    border-radius: var(--radius-card);
+  }
+
+  /* Заглушка вместо фотографии — серая плашка с подписью */
+  .placeholder-block {
+    background-color: var(--color-placeholder);
+    border-radius: var(--radius-card);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+/* Градиентные фоны секций: заменяют фоновые изображения */
+@utility bg-gradient-cool {
+  background-image: linear-gradient(180deg, #000000 0%, #0b1026 55%, #1a1040 100%);
+}
+
+@utility bg-gradient-warm {
+  background-image: linear-gradient(180deg, #000000 0%, #1a0f08 100%);
+}
+
+@utility bg-gradient-light {
+  background-image: linear-gradient(180deg, #f5f5f7 0%, #d9d9de 100%);
+}
+
+/*
+ * Полупрозрачные варианты тех же градиентов.
+ * Нужны секциям с 3D: сквозь них должно быть видно WebGL-слой.
+ */
+@utility bg-gradient-cool-soft {
+  background-image: linear-gradient(
+    180deg,
+    rgb(0 0 0 / 0.86) 0%,
+    rgb(11 16 38 / 0.8) 55%,
+    rgb(26 16 64 / 0.78) 100%
+  );
+}
+
+@utility bg-gradient-warm-soft {
+  background-image: linear-gradient(180deg, rgb(0 0 0 / 0.86) 0%, rgb(26 15 8 / 0.8) 100%);
+}
+
+@utility bg-gradient-light-soft {
+  background-image: linear-gradient(
+    180deg,
+    rgb(245 245 247 / 0.92) 0%,
+    rgb(217 217 222 / 0.88) 100%
+  );
+}
