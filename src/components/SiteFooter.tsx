@@ -1,41 +1,37 @@
-import { FOOTER_COLUMNS, SITE, SOCIAL_LINKS } from '../data/content'
-import { LogoMark } from './LogoMark'
-
-/** Подвал: колонки ссылок, соцсети, знак и копирайт. */
 export function SiteFooter() {
   return (
-    <footer className="w-full bg-ink px-6 py-16 md:px-12 lg:px-20" data-animation="fadeIn">
-      <div className="mx-auto w-full max-w-6xl">
-        <div className="mb-10 grid gap-8 md:grid-cols-4">
-          {FOOTER_COLUMNS.map((column) => (
-            <section key={column.title}>
-              <h4 className="mb-3 text-sm font-semibold text-mist" data-animation="fadeIn">
-                {column.title}
-              </h4>
-              <ul className="space-y-2" data-animation="revealItems">
-                {column.links.map((link) => (
-                  <li key={link} className="text-sm text-graphite">
-                    {link}
-                  </li>
-                ))}
-              </ul>
-            </section>
-          ))}
+    <footer className="border-t border-white/10 bg-ink/80 py-16">
+      <div className="mx-auto max-w-6xl px-6">
+        <div className="mb-12 grid grid-cols-2 gap-8 md:grid-cols-4">
+          <div>
+            <h4 className="mb-4 text-sm font-semibold text-mist">Продукты</h4>
+            <ul className="space-y-2 text-sm text-graphite">
+              <li><a href="#iphone" className="hover:text-mist">iPhone 18 Pro</a></li>
+              <li><a href="#ipad" className="hover:text-mist">iPad mini</a></li>
+              <li><a href="#macbook" className="hover:text-mist">MacBook Pro</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 className="mb-4 text-sm font-semibold text-mist">Разделы</h4>
+            <ul className="space-y-2 text-sm text-graphite">
+              <li><a href="#comparison" className="hover:text-mist">Сравнение</a></li>
+              <li><a href="#hero" className="hover:text-mist">Обзор</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 className="mb-4 text-sm font-semibold text-mist">О Trio</h4>
+            <ul className="space-y-2 text-sm text-graphite">
+              <li><a href="#" className="hover:text-mist">О проекте</a></li>
+              <li><a href="#" className="hover:text-mist">Контакты</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 className="mb-4 text-sm font-semibold text-mist">Trio</h4>
+            <p className="text-sm text-graphite">Три устройства. Одна экосистема.</p>
+          </div>
         </div>
-
-        <ul className="mb-8 flex flex-wrap gap-6" data-animation="revealItems">
-          {SOCIAL_LINKS.map((social) => (
-            <li key={social} className="text-sm text-graphite">
-              {social}
-            </li>
-          ))}
-        </ul>
-
-        <div className="mb-8 h-px w-full bg-white/10" data-animation="line" />
-
-        <div className="flex items-center gap-4">
-          <LogoMark className="text-xl" />
-          <p className="text-sm text-graphite">{SITE.copyright}</p>
+        <div className="border-t border-white/10 pt-8 text-center text-xs text-graphite">
+          © 2026 Trio. Все права защищены.
         </div>
       </div>
     </footer>

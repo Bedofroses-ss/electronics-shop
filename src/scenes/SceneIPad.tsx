@@ -1,10 +1,33 @@
-import { useRef } from 'react'
-import { useDeviceScene } from './useDeviceScene'
+import { Suspense } from 'react'
+import { ContactShadows, Environment, OrbitControls, useGLTF } from '@react-three/drei'
+import { Canvas } from '@react-three/fiber'
 
-/** Сцена iPad: плита планшета со стилусом. Загружается лениво. */
-export default function SceneIPad() {
-  const canvasRef = useRef<HTMLCanvasElement>(null)
-  useDeviceScene(canvasRef, 'ipad')
+useGLTF.preload('/models/ipad.glb')
 
-  return <canvas ref={canvasRef} className="h-full w-full" />
+function Model() {
+  const { scene } = useGLTF('/models/ipad.glb')
+  return <primitive object={scene} scale={1} position={[0, -0.4, 0]} />
 }
+
+export function SceneIPad() {
+  return (
+    <Canvas
+      camera={{ position: [0, 0, 4], fov: 35 }}
+      dpr={[1, 2]}
+      gl={{ antialias: true, alpha: true }}
+      style={{ width: '100%', height: '100%' }}
+    >
+      <Suspense fallback={null}>
+        <ambientLight intensity={0.6} />
+        <directionalLight position={[5, 5, 5]} intensity={1.2} />
+        <directionalLight position={[-5, 3, -5]} intensity={0.4} />
+        <Model />
+        <ContactShadows position={[0, -1.5, 0]} opacity={0.5} scale={8} blur={2.5} />
+        <Environment preset="city" />
+        <OrbitControls enableZoom={false} enablePan={false} autoRotate autoRotateSpeed={0.8} />
+      </Suspense>
+    </Canvas>
+  )
+}
+
+export default SceneIPad

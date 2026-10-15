@@ -17,21 +17,21 @@ export const SITE = {
   /** Название сайта: идёт в <title>, мета-теги и лого. */
   brand: 'Trio',
   /** Полное имя страницы для мета-тегов. */
-  title: 'Trio — iPhone 18 Pro, iPad M4, MacBook Air M5',
+  title: 'Trio — iPhone 18 Pro, iPad mini, MacBook Pro',
   /** Описание страницы для мета-тегов. */
-  description: 'iPhone 18 Pro, iPad M4 and MacBook Air M5 — three devices, one ecosystem.',
+  description: 'iPhone 18 Pro, iPad mini and MacBook Pro — three devices, one ecosystem.',
   /** Заголовок первого экрана: это продукт, а не название сайта. */
   name: 'iPhone 18 Pro',
   tagline: 'Beyond Intelligence.',
   scrollCta: 'Scroll to discover',
-  copyright: '© 2026 Apple Inc.',
+  copyright: '© 2026 Trio. Все права защищены.',
 } as const
 
 export const NAV_ITEMS: NavItem[] = [
   { id: 'hero', label: 'Introduction' },
   { id: 'iphone', label: 'iPhone 18 Pro' },
-  { id: 'ipad', label: 'iPad' },
-  { id: 'macbook', label: 'MacBook Air' },
+  { id: 'ipad', label: 'iPad mini' },
+  { id: 'macbook', label: 'MacBook Pro' },
   { id: 'comparison', label: 'Comparison' },
 ]
 
@@ -80,15 +80,15 @@ export const IPAD_CHAPTER: DeviceChapter = {
   id: 'ipad',
   webgl: 'IPad',
   eyebrow: 'Your Next Computer',
-  heading: 'iPad. Supercharged by M4.',
+  heading: 'iPad mini. Supercharged by A17 Pro.',
   blocks: [
     {
-      title: 'M4',
-      text: '10-core CPU and 10-core GPU.',
+      title: 'A17 Pro',
+      text: '6-core CPU and 6-core GPU.',
     },
     {
-      title: 'Ultra Retina XDR',
-      text: 'Ultra Retina XDR display.',
+      title: 'Liquid Retina',
+      text: 'Liquid Retina display.',
     },
     {
       title: 'Apple Pencil Pro',
@@ -101,32 +101,32 @@ export const MACBOOK_CHAPTER: DeviceChapter = {
   id: 'macbook',
   webgl: 'MacBook',
   eyebrow: 'Power. Silence. Elegance.',
-  heading: 'MacBook Air (M5)',
+  heading: 'MacBook Pro (M1 Pro)',
   blocks: [
     {
-      title: '+15% CPU',
-      text: 'Up to 15% faster CPU.',
+      title: 'M1 Pro',
+      text: 'Up to 10-core CPU with 8 performance and 2 efficiency cores.',
     },
     {
-      title: '+30% GPU',
-      text: 'Up to 30% faster GPU.',
+      title: '16-core GPU',
+      text: 'Up to 16-core GPU.',
     },
     {
-      title: 'Ray tracing +45%',
-      text: 'Ray tracing up to 45% faster.',
+      title: '200 GB/s',
+      text: '200 GB/s memory bandwidth. Wi-Fi 6.',
     },
     {
-      title: '153 GB/s',
-      text: '153 GB/s memory bandwidth. Wi-Fi 7.',
+      title: '32GB',
+      text: 'Up to 32GB unified memory.',
     },
   ],
 }
 
 /** Лента характеристик для приёма specsParallax (бывший hoursParallax). */
-export const SPEC_STRIP: string[] = ['M4', '10-core CPU', '10-core GPU', 'Ultra Retina XDR', 'Apple Pencil Pro']
+export const SPEC_STRIP: string[] = ['A17 Pro', '6-core CPU', '6-core GPU', 'Liquid Retina', 'Apple Pencil Pro']
 
 /** Бегущая строка для приёма marqueeDots. */
-export const MARQUEE_TEXT = 'IPHONE 18 PRO · IPAD · MACBOOK AIR · ONE ECOSYSTEM'
+export const MARQUEE_TEXT = 'IPHONE 18 PRO · IPAD MINI · MACBOOK PRO · ONE ECOSYSTEM'
 
 export interface GridItem {
   variant: 'css-shape' | 'svg' | 'placeholder'
@@ -139,7 +139,7 @@ export const IPAD_GRID: GridItem[] = [
   { variant: 'svg', device: 'ipad' },
   { variant: 'css-shape' },
   { variant: 'placeholder', caption: 'Apple Pencil Pro' },
-  { variant: 'placeholder', caption: 'M4 chip' },
+  { variant: 'placeholder', caption: 'A17 Pro chip' },
   { variant: 'css-shape' },
   { variant: 'svg', device: 'ipad' },
 ]
@@ -151,15 +151,15 @@ export interface GenerationItem {
 
 /**
  * Лента поколений для приёма lineupGenerations (бывший watchesGenerations).
- * В ТЗ конкретных моделей нет — список заполнен реальными поколениями MacBook Air,
+ * В ТЗ конкретных моделей нет — список заполнен реальными поколениями MacBook Pro,
  * при необходимости правьте здесь.
  */
 export const MACBOOK_LINEUP: GenerationItem[] = [
-  { name: 'MacBook Air (M1)', year: '2020' },
-  { name: 'MacBook Air (M2)', year: '2022' },
-  { name: 'MacBook Air (M3)', year: '2024' },
-  { name: 'MacBook Air (M4)', year: '2025' },
-  { name: 'MacBook Air (M5)', year: '2026' },
+  { name: 'MacBook Pro (M1 Pro)', year: '2021' },
+  { name: 'MacBook Pro (M2 Pro)', year: '2023' },
+  { name: 'MacBook Pro (M3 Pro)', year: '2023' },
+  { name: 'MacBook Pro (M4 Pro)', year: '2024' },
+  { name: 'MacBook Pro (M5 Pro)', year: '2026' },
 ]
 
 export interface ComparisonRow {
@@ -172,18 +172,17 @@ export const COMPARISON = {
   webgl: 'Comparison',
   heading: 'Three devices. One ecosystem.',
   specColumnLabel: 'Specification',
-  devices: ['iPhone 18 Pro', 'iPad', 'MacBook Air'] as const,
+  devices: ['iPhone 18 Pro', 'iPad mini', 'MacBook Pro'] as const,
   /** Прочерк означает, что характеристика в ТЗ не задана. */
   rows: [
-    { label: 'Chip', values: ['A20 Pro', 'M4', 'M5'] },
-    { label: 'CPU', values: ['6-core', '10-core', 'up to +15%'] },
-    { label: 'GPU', values: ['7-core', '10-core', 'up to +30%'] },
+    { label: 'Chip', values: ['A20 Pro', 'A17 Pro', 'M1 Pro'] },
+    { label: 'CPU', values: ['6-core', '6-core', '10-core'] },
+    { label: 'GPU', values: ['7-core', '6-core', '16-core'] },
     { label: 'Camera', values: ['48MP Pro Fusion', '—', '—'] },
-    { label: 'Display', values: ['—', 'Ultra Retina XDR', 'Liquid Retina'] },
+    { label: 'Display', values: ['—', 'Liquid Retina', 'Liquid Retina XDR'] },
     { label: 'Video playback', values: ['up to 43 hours', '—', '—'] },
-    { label: 'Ray tracing', values: ['—', '—', '+45%'] },
-    { label: 'Memory bandwidth', values: ['—', '—', '153 GB/s'] },
-    { label: 'Wireless', values: ['5G', 'Wi-Fi 6E', 'Wi-Fi 7'] },
+    { label: 'Memory bandwidth', values: ['—', '—', '200 GB/s'] },
+    { label: 'Wireless', values: ['5G', 'Wi-Fi 6E', 'Wi-Fi 6'] },
     { label: 'Accessory', values: ['—', 'Apple Pencil Pro', '—'] },
   ] as ComparisonRow[],
 } as const
@@ -196,30 +195,6 @@ export interface ComparisonItem {
 /** Ряд заглушек устройств в секции сравнения: форма и подпись под ней. */
 export const COMPARISON_LINEUP: ComparisonItem[] = [
   { kind: 'iphone', name: 'iPhone 18 Pro' },
-  { kind: 'ipad', name: 'iPad' },
-  { kind: 'macbook', name: 'MacBook Air' },
+  { kind: 'ipad', name: 'iPad mini' },
+  { kind: 'macbook', name: 'MacBook Pro' },
 ]
-
-export interface FooterColumn {
-  title: string
-  links: string[]
-}export const FOOTER_COLUMNS: FooterColumn[] = [
-  {
-    title: 'Shop and Learn',
-    links: ['iPhone', 'iPad', 'Mac', 'Watch', 'AirPods'],
-  },
-  {
-    title: 'Services',
-    links: ['iCloud+', 'Apple Music', 'Apple TV+', 'Apple Pay'],
-  },
-  {
-    title: 'Account',
-    links: ['Manage Your Apple Account', 'Apple Store Account', 'iCloud.com'],
-  },
-  {
-    title: 'About Apple',
-    links: ['Newsroom', 'Careers', 'Investors', 'Contact Apple'],
-  },
-]
-
-export const SOCIAL_LINKS: string[] = ['Facebook', 'Instagram', 'YouTube', 'LinkedIn']

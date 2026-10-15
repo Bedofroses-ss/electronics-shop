@@ -4,7 +4,7 @@ import { Section } from './Section'
 import { SectionHeading } from './SectionHeading'
 import { VisualBlock } from './VisualBlock'
 
-/** Глава MacBook Air: силуэт ноутбука и лента поколений. */
+/** Глава MacBook Pro: силуэт ноутбука и лента поколений. */
 export function MacBookSection() {
   const chapter = MACBOOK_CHAPTER
 
