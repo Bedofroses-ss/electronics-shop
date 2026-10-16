@@ -3,6 +3,7 @@ import { defineConfig } from 'vite'
 
 // https://vite.dev/config/
 export default defineConfig({
+  base: '/electronics-shop/',
   plugins: [react()],
   server: {
     // Инструменты записи создают рядом с файлами временные каталоги вида

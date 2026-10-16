@@ -11,7 +11,7 @@ export function IPhoneSection() {
 
   return (
     <Section id={chapter.id} webgl={chapter.webgl} background="bg-gradient-cool-soft">
-      <SectionHeading eyebrow={chapter.eyebrow} heading={chapter.heading} />
+      <SectionHeading eyebrow="" heading={chapter.heading} />
 
       <div className="mb-16 grid items-center gap-10 md:grid-cols-2">
         <div className="relative">

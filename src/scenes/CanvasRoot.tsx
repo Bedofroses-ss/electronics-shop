@@ -3,9 +3,16 @@ import type { SectionId } from '../data/content'
 import { useActiveSection } from '../hooks/useActiveSection'
 import { useReducedMotion } from '../hooks/useReducedMotion'
 
-const SceneIPhone = lazy(() => import('./SceneIPhone'))
-const SceneIPad = lazy(() => import('./SceneIPad'))
-const SceneMacBook = lazy(() => import('./SceneMacBook'))
+// lazy() ждёт модуль с default — поэтому "заворачиваем" named export в default
+const SceneIPhone = lazy(() =>
+  import('./SceneIPhone').then((m) => ({ default: m.SceneIPhone }))
+)
+const SceneIPad = lazy(() =>
+  import('./SceneIPad').then((m) => ({ default: m.SceneIPad }))
+)
+const SceneMacBook = lazy(() =>
+  import('./SceneMacBook').then((m) => ({ default: m.SceneMacBook }))
+)
 
 /**
  * Привязка секций к 3D-сценам — тот самый контракт data-webgl из референса.

@@ -19,7 +19,9 @@ export function ComparisonSection() {
         {COMPARISON_LINEUP.map((item) => (
           <figure key={item.name} className="flex flex-col items-center gap-4">
             <DeviceMockup kind={item.kind} className="h-40 md:h-56" />
-            <figcaption className="text-sm text-mist">{item.name}</figcaption>
+            <figcaption className="text-center max-w-260">
+              <p className="text-sm font-semibold text-mist">{item.name}</p>
+            </figcaption>
           </figure>
         ))}
       </div>

@@ -1,46 +1,56 @@
-import { CURSOR_HINT, IPAD_CHAPTER, IPAD_GRID, MARQUEE_TEXT, SPEC_STRIP } from '../data/content'
-import { FeatureList } from './FeatureList'
-import { MarqueeDots } from './MarqueeDots'
+import { IPAD_CHAPTER } from '../data/content'
 import { Section } from './Section'
 import { SectionHeading } from './SectionHeading'
-import { VisualBlock } from './VisualBlock'
+import { SceneIPad } from '../scenes/SceneIPad'
 
-/** Глава iPad: светлый фон, сетка фигур, бегущая строка и лента характеристик. */
+const SPEC_STRIP = ['A17 Pro', '6-core CPU', '6-core GPU', 'Liquid Retina', 'Apple Pencil Pro']
+
 export function IPadSection() {
   const chapter = IPAD_CHAPTER
 
   return (
-    <Section id={chapter.id} webgl={chapter.webgl} cursor={CURSOR_HINT} background="bg-gradient-light-soft">
+    <Section id={chapter.id} background="bg-mist">
       <SectionHeading eyebrow={chapter.eyebrow} heading={chapter.heading} light />
 
-      {/* gridPictures: каскадное появление сетки */}
-      <div className="mb-14 grid grid-cols-2 gap-4 md:grid-cols-3" data-animation="gridPictures">
-        {IPAD_GRID.map((item, index) => (
-          <VisualBlock
-            key={item.caption ?? `grid-${index}`}
-            variant={item.variant}
-            device={item.device}
-            caption={item.caption}
-            className="h-40"
-          />
-        ))}
+      <div className="my-12 h-[32rem] w-full">
+        <SceneIPad />
       </div>
 
-      {/* marqueeDots: бегущая строка */}
-      <div className="mb-14">
-        <MarqueeDots text={MARQUEE_TEXT} />
+      <div className="mx-auto mt-4 max-w-5xl">
+        <div className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white/60 px-4 py-2 text-[10px] uppercase tracking-[0.2em] text-black/60 backdrop-blur">
+          <span className="h-1.5 w-1.5 rounded-full bg-black/40" />
+          Scroll to explore
+        </div>
       </div>
 
-      {/* specsParallax: лента характеристик, бывший приём hoursParallax */}
-      <ul className="mb-14 grid grid-cols-2 gap-4 md:grid-cols-5" data-animation="specsParallax">
+      <div
+        className="mx-auto mt-10 flex max-w-5xl flex-wrap justify-center gap-3"
+        data-animation="fadeIn"
+      >
         {SPEC_STRIP.map((spec) => (
-          <li key={spec} className="rounded-2xl border border-ink/10 bg-ink/5 p-4 text-center text-xs text-ink">
+          <span
+            key={spec}
+            className="rounded-full border border-black/10 bg-white/40 px-5 py-2 text-xs text-black/70 backdrop-blur"
+          >
             {spec}
-          </li>
+          </span>
         ))}
-      </ul>
+      </div>
 
-      <FeatureList blocks={chapter.blocks} light />
+      <div
+        className="mx-auto mt-10 grid max-w-5xl grid-cols-1 gap-4 md:grid-cols-3 md:gap-6"
+        data-animation="fadeIn"
+      >
+        {chapter.blocks.map((block) => (
+          <div
+            key={block.title}
+            className="rounded-2xl border border-black/10 bg-white/40 p-6 backdrop-blur"
+          >
+            <h3 className="text-lg font-semibold text-black">{block.title}</h3>
+            <p className="mt-2 text-sm text-black/60">{block.text}</p>
+          </div>
+        ))}
+      </div>
     </Section>
   )
 }

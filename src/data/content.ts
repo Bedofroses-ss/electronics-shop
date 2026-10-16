@@ -99,7 +99,7 @@ export const IPAD_CHAPTER: DeviceChapter = {
 
 export const MACBOOK_CHAPTER: DeviceChapter = {
   id: 'macbook',
-  webgl: 'MacBook',
+  webgl: 'macbook',
   eyebrow: 'Power. Silence. Elegance.',
   heading: 'MacBook Pro (M1 Pro)',
   blocks: [
@@ -171,30 +171,25 @@ export const COMPARISON = {
   id: 'comparison' as SectionId,
   webgl: 'Comparison',
   heading: 'Three devices. One ecosystem.',
-  specColumnLabel: 'Specification',
+  specColumnLabel: 'Характеристика',
   devices: ['iPhone 18 Pro', 'iPad mini', 'MacBook Pro'] as const,
-  /** Прочерк означает, что характеристика в ТЗ не задана. */
   rows: [
-    { label: 'Chip', values: ['A20 Pro', 'A17 Pro', 'M1 Pro'] },
-    { label: 'CPU', values: ['6-core', '6-core', '10-core'] },
-    { label: 'GPU', values: ['7-core', '6-core', '16-core'] },
-    { label: 'Camera', values: ['48MP Pro Fusion', '—', '—'] },
-    { label: 'Display', values: ['—', 'Liquid Retina', 'Liquid Retina XDR'] },
-    { label: 'Video playback', values: ['up to 43 hours', '—', '—'] },
-    { label: 'Memory bandwidth', values: ['—', '—', '200 GB/s'] },
-    { label: 'Wireless', values: ['5G', 'Wi-Fi 6E', 'Wi-Fi 6'] },
-    { label: 'Accessory', values: ['—', 'Apple Pencil Pro', '—'] },
+    { label: 'Модель', values: ['iPhone 18 Pro', 'iPad mini', 'MacBook Pro'] },
+    { label: 'Цвет', values: ['Burgundy', 'Purple', 'Space Gray'] },
+    { label: 'Чип', values: ['A20 Pro', 'A17 Pro', 'M1 Pro'] },
+    { label: 'Кратко', values: ['Flagship, 48MP camera', 'Compact tablet, Apple Pencil', 'Pro laptop, 16-core GPU'] },
   ] as ComparisonRow[],
 } as const
 
 export interface ComparisonItem {
   kind: 'iphone' | 'ipad' | 'macbook'
   name: string
+  description: string
 }
 
 /** Ряд заглушек устройств в секции сравнения: форма и подпись под ней. */
 export const COMPARISON_LINEUP: ComparisonItem[] = [
-  { kind: 'iphone', name: 'iPhone 18 Pro' },
-  { kind: 'ipad', name: 'iPad mini' },
-  { kind: 'macbook', name: 'MacBook Pro' },
+  { kind: 'iphone', name: 'iPhone 18 Pro', description: 'Flagship with A20 Pro chip, 48MP Pro Fusion camera and up to 43 hours of video playback.' },
+  { kind: 'ipad', name: 'iPad mini', description: 'Compact tablet with A17 Pro chip, Liquid Retina display and Apple Pencil Pro support.' },
+  { kind: 'macbook', name: 'MacBook Pro', description: 'Pro laptop with M1 Pro chip, 16-core GPU, 200 GB/s memory bandwidth and Liquid Retina XDR display.' },
 ]
